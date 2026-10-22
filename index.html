@@ -134,8 +134,6 @@
   .header-nav { display: flex; align-items: center; gap: 4px; }
   .header-nav a:not(.btn) { padding: 8px 16px; border-radius: 999px; font-family: var(--font-display); font-weight: 800; font-size: 15px; color: rgb(255 255 255 / .85); transition: background-color .2s, color .2s; }
   .header-nav a:not(.btn):hover { background: rgb(255 255 255 / .1); color: var(--gold-300); }
-  .header-nav .btn { padding: 11px 20px; font-size: 14px; margin-left: 8px; }
-  .header-nav .btn .icon { font-size: 18px; }
 
   /* ---------- hero ---------- */
   .hero { position: relative; isolation: isolate; overflow: hidden; background: var(--hero); color: var(--white); }
@@ -323,7 +321,6 @@
     .site-header .wrap { height: 62px; }
     .brand img { width: 42px; height: 42px; }
     .brand span { font-size: 16px; }
-    .header-nav .btn { display: none; }
     .steps { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .hero-ctas .btn { width: 100%; }
@@ -383,7 +380,6 @@
     <nav class="header-nav" aria-label="Principal">
       <a href="#pilares">Pilares</a>
       <a href="#estrutura">Estrutura</a>
-      <a class="btn btn-gold" data-wa="header" href="#"><svg class="icon"><use href="#i-wa"/></svg>Falar no WhatsApp</a>
     </nav>
   </div>
   <div class="gold-line" aria-hidden="true"></div>
@@ -406,8 +402,7 @@
         <li>Fé Cristã</li><li>Disciplina</li><li>Estabilidade</li><li>Liberdade</li>
       </ul>
       <div class="hero-ctas">
-        <a class="btn btn-gold btn-lg" data-wa="vaga" href="#"><svg class="icon"><use href="#i-wa"/></svg>Garantir minha vaga</a>
-        <a class="btn btn-ghost btn-lg" data-wa="visita" href="#"><svg class="icon"><use href="#i-calendar"/></svg>Agendar uma visita</a>
+        <a class="btn btn-gold btn-lg" data-wa="visita" href="#"><svg class="icon"><use href="#i-wa"/></svg>Agendar uma visita</a>
       </div>
       <p class="hero-note"><svg class="icon"><use href="#i-wa"/></svg>Atendimento direto com a equipe de matrículas pelo WhatsApp.</p>
     </div>
@@ -598,7 +593,7 @@
       </div>
       <div class="qr-card">
         <img class="qr" src="assets/img/qr-whatsapp.svg" alt="QR Code para o WhatsApp do Colégio CPPEM" width="180" height="180" loading="lazy">
-        <div><b>(81) 99707-6388</b><span>Aponte a câmera e fale com a equipe de matrículas</span></div>
+        <div><b>(81) 95168-7615</b><span>Aponte a câmera e fale com a equipe de matrículas</span></div>
       </div>
     </div>
     <div class="mascots reveal" aria-hidden="true">
@@ -621,7 +616,7 @@
     <div>
       <p class="f-title">Fale com a gente</p>
       <ul class="f-list">
-        <li><svg class="icon"><use href="#i-wa"/></svg><a data-wa="geral" href="#">(81) 99707-6388</a></li>
+        <li><svg class="icon"><use href="#i-wa"/></svg><a data-wa="geral" href="#">(81) 95168-7615</a></li>
         <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:colegiocppem@gmail.com">colegiocppem@gmail.com</a></li>
         <li><svg class="icon"><use href="#i-insta"/></svg><a href="https://www.instagram.com/colegiocppem/" target="_blank" rel="noopener">@colegiocppem</a></li>
       </ul>
@@ -655,16 +650,8 @@
 </div>
 
 <script>
-  // Número e mensagens da campanha: cada botão abre a conversa já com o contexto certo
-  const WHATSAPP_NUMBER = "5581997076388";
-  const MESSAGES = {
-    geral: "Olá! Vi a página do Colégio CPPEM e gostaria de saber mais sobre as matrículas 2027.",
-    header: "Olá! Vi a página do Colégio CPPEM e gostaria de saber mais sobre as matrículas 2027.",
-    flutuante: "Olá! Vi a página do Colégio CPPEM e gostaria de saber mais sobre as matrículas 2027.",
-    barra: "Olá! Vi a página do Colégio CPPEM e gostaria de saber mais sobre as matrículas 2027.",
-    vaga: "Olá! Quero garantir uma vaga no Colégio CPPEM para 2027. Pode me ajudar?",
-    visita: "Olá! Gostaria de agendar uma visita ao Colégio CPPEM.",
-  };
+  // Link único de atendimento (todos os botões abrem a mesma conversa)
+  const WHATSAPP_URL = "https://wa.me/5581951687615?text=Ol%C3%A1,%20quero%20agendar%20minha%20visita%20ao%20Col%C3%A9gio%20Cppem.";
   const BUBBLES = [
     { text: "Agende uma visita! 👋", key: "visita" },
     { text: "Ficou com dúvida? Fale com a gente.", key: "geral" },
@@ -672,7 +659,7 @@
     { text: "Estamos online. Chama no WhatsApp!", key: "geral" },
   ];
 
-  const whatsappUrl = (key) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(MESSAGES[key] || MESSAGES.geral)}`;
+  const whatsappUrl = () => WHATSAPP_URL;
 
   window.dataLayer = window.dataLayer || [];
   document.querySelectorAll("[data-wa]").forEach((link) => {
